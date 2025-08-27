@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Testing Zone</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #000; /* black background */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #a259ff; /* purple text */
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3rem;
+      padding: 20px 40px;
+      background: rgba(162, 89, 255, 0.1); /* translucent purple background */
+      border-radius: 15px;
+      box-shadow: 0 0 12px rgba(162, 89, 255, 0.4);
+      animation: gentlePulse 4s ease-in-out infinite;
+      margin-bottom: 15px;
+      color: #d1b3ff; /* lighter purple */
+      transition: box-shadow 0.3s ease;
+    }
+    p {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #d1b3ff;
+      text-shadow: 0 0 6px #a259ff;
+      user-select: none;
+      margin: 0;
+    }
+    .signature {
+      font-size: 1rem;
+      font-style: italic;
+      margin-top: 6px;
+      color: #8a58ffcc;
+      user-select: none;
+    }
+
+    @keyframes gentlePulse {
+      0%, 100% {
+        box-shadow: 0 0 12px rgba(162, 89, 255, 0.4);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 22px rgba(162, 89, 255, 0.65);
+        transform: scale(1.02);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>This is my testing/<br>developing zone</h1>
+  <p>I ♥ Neocities</p>
+  <div class="signature">- VapidAddictionz</div>
+</body>
+</html>

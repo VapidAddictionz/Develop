@@ -1673,7 +1673,7 @@ n(this, function () {
                         var t = e.target;
                         t.removeEventListener(n.AP.ANSWER_CHOSEN, i.textureResolutionAnswerChosen);
                         var s = t.index;
-                        t.die(), 0 === s && (l.Z.textureResolution = i.chosenTextureResolution, i.sharedObject.data.textureResolution = i.chosenTextureResolution, window.parent.history.replaceState({}, document.title, window.parent.location.pathname), window.location.reload());
+                        t.die(), 0 === s && (l.Z.textureResolution = i.chosenTextureResolution, i.sharedObject.data.textureResolution = i.chosenTextureResolution, window.history.replaceState({}, document.title, window.location.pathname), window.location.reload());
                     }, i.increasedFramesWarningAnswerChosen = function (e) {
                         n.xx.instance.hide();
                         var t = e.target;
@@ -17134,7 +17134,7 @@ n(this, function () {
                 }, n.save = function () {
                     this.statusSprite = new y.dU("Saving Replay...");
                     var e = this.statusSprite.window;
-                    this._window.parent.addChild(e), e.center();
+                    this._window.addChild(e), e.center();
                     var t = this.createReplayQueryString(this._levelId, this._character, g.Z.architecture, this._completed ? this._length : g.Z.maxReplayFrames, g.Z.CURRENT_VERSION, this.commentsText.temp.text), i = new Y(this.APPLESAUCE), s = i.encrypt(t), r = i.getIV(), o = new d.SK;
                     o.writeBytes(this._byteArray);
                     var n = d.dr.encodeByteArray(o), a = window.HW_SETTINGS.corsProxy + encodeURIComponent("https://totaljerkface.com/replay.hw"), h = new c.RW(a);
@@ -17271,14 +17271,14 @@ n(this, function () {
                                 if (g.Z.user_id <= 0) {
                                     r.promptSprite = new y.sP("You must be logged in to save replays.  Login or register for free up there on the right.", "ok");
                                     var t = r.promptSprite.window;
-                                    return r._window.parent.addChild(t), void t.center();
+                                    return r._window.addChild(t), void t.center();
                                 }
-                                if (g.Z.disableUpload) return r.promptSprite = new y.sP(g.Z.disableMessage, "OH FINE"), t = r.promptSprite.window, r._window.parent.addChild(t), void t.center();
+                                if (g.Z.disableUpload) return r.promptSprite = new y.sP(g.Z.disableMessage, "OH FINE"), t = r.promptSprite.window, r._window.addChild(t), void t.center();
                                 r.dispatchEvent(new c.ju(s.SAVE_REPLAY));
                                 break;
                             case r.editFavoritesButton:
-                                if (g.Z.user_id <= 0) return r.promptSprite = new y.sP("You must be logged in to edit your favorite levels.  Login or register for free up there on the right.", "ok"), t = r.promptSprite.window, r._window.parent.addChild(t), void t.center();
-                                if (g.Z.disableUpload) return r.promptSprite = new y.sP(g.Z.disableMessage, "OH FINE"), t = r.promptSprite.window, r._window.parent.addChild(t), void t.center();
+                                if (g.Z.user_id <= 0) return r.promptSprite = new y.sP("You must be logged in to edit your favorite levels.  Login or register for free up there on the right.", "ok"), t = r.promptSprite.window, r._window.addChild(t), void t.center();
+                                if (g.Z.disableUpload) return r.promptSprite = new y.sP(g.Z.disableMessage, "OH FINE"), t = r.promptSprite.window, r._window.addChild(t), void t.center();
                                 r.editFavorites();
                                 break;
                             case r.exitButton:
@@ -17316,7 +17316,7 @@ n(this, function () {
                         }
                         r.statusSprite = new y.dU(i);
                         var s = r.statusSprite.window;
-                        r._window.parent.addChild(s), s.center();
+                        r._window.addChild(s), s.center();
                         var o = new c.yW;
                         o.addEventListener(c.ju.COMPLETE, r.editFavoritesComplete), o.load(e);
                     }, r.editFavoritesComplete = function (e) {
@@ -17330,17 +17330,17 @@ n(this, function () {
                             r.isFavorite ? ($.f.trackEvent($.f.LEVEL, $.f.REMOVE_FAVORITE), n > -1 && g.Z.favoriteLevelIds.splice(n, 1)) : ($.f.trackEvent($.f.LEVEL, $.f.ADD_FAVORITE), -1 == n && g.Z.favoriteLevelIds.push(r.levelDataObject.id)), r.editFavoritesButton.disabled = true;
                         } else r.promptSprite = new y.sP("Error: something dreadful has happened", "ok");
                         var a = r.promptSprite.window;
-                        r._window.parent.addChild(a), a.center();
+                        r._window.addChild(a), a.center();
                     }, r.vote = function (e) {
                         if (void 0 === e && (e = null), g.Z.user_id <= 0) {
                             r.promptSprite = new y.sP("You must be logged in to vote.  Login or register for free up there on the right.", "ok");
                             var t = r.promptSprite.window;
-                            return r._window.parent.addChild(t), void t.center();
+                            return r._window.addChild(t), void t.center();
                         }
-                        if (g.Z.disableUpload) return r.promptSprite = new y.sP(g.Z.disableMessage, "OH FINE"), t = r.promptSprite.window, r._window.parent.addChild(t), void t.center();
+                        if (g.Z.disableUpload) return r.promptSprite = new y.sP(g.Z.disableMessage, "OH FINE"), t = r.promptSprite.window, r._window.addChild(t), void t.center();
                         r.statusSprite = new y.dU("casting your vote...");
                         var i = r.statusSprite.window;
-                        r._window.parent.addChild(i), i.center();
+                        r._window.addChild(i), i.center();
                         var s = new c.RW(window.HW_SETTINGS.corsProxy + encodeURIComponent("https://totaljerkface.com/set_level.hw"));
                         s.method = c.H9.POST;
                         var o = new c.JH;
@@ -17354,7 +17354,7 @@ n(this, function () {
                         var i = String(t.data), s = i.substr(0, 8), o = i.split(":");
                         s.indexOf("<html>") > -1 ? r.promptSprite = new y.sP("There was an unexpected system Error", "oh") : "failure" == o[0] ? "invalid_action" == o[1] ? r.promptSprite = new y.sP("An invalid action was passed (you really shouldn't ever be seeing this).", "ok") : "duplicate_rating" == o[1] ? r.promptSprite = new y.sP("You've already voted on this level.", "ok") : "illegal_argument" == o[1] ? r.promptSprite = new y.sP("Rating must be between 0 and 5.", "ok") : "bad_param" == o[1] ? r.promptSprite = new y.sP("A bad parameter was passed (you really shouldn't ever be seeing this).", "ok") : "app_error" == o[1] ? r.promptSprite = new y.sP("Sorry, there was an application error. It was most likely database related. Please try again in a moment.", "ok") : "not_logged_in" == o[1] ? r.promptSprite = new y.sP("You are not currently logged in.", "alright") : r.promptSprite = new y.sP("An unknown Error has occurred.", "oh") : "success" == o[0] ? ($.f.trackEvent($.f.LEVEL, $.f.VOTE, "rating_" + r.votingStars.rating), r.promptSprite = new y.sP("You voted! Good job.", "thanks")) : r.promptSprite = new y.sP("Error: something dreadful has happened", "ok");
                         var n = r.promptSprite.window;
-                        r._window.parent.addChild(n), n.center();
+                        r._window.addChild(n), n.center();
                     }, r.levelDataObject = t, r._disableSave = i;
                     var o = new c.KG((0, E.qX)("GameUI", "mc_session_menu"));
                     return o.convertChildren(o.pixiSprite), r.addChild(o), r.levelNameText = c.nv.pixiToFlash(o.levelNameText.pixiSprite, o), r.authorText = c.nv.pixiToFlash(o.authorText.pixiSprite, o), r.buildWindow(), r;
@@ -17431,13 +17431,13 @@ n(this, function () {
                         if (g.Z.user_id <= 0) {
                             i.promptSprite = new y.sP("You must be logged in to vote.  Login or register for free up there on the right.", "ok");
                             var e = i.promptSprite.window;
-                            return i._window.parent.addChild(e), void e.center();
+                            return i._window.addChild(e), void e.center();
                         }
-                        if (g.Z.disableUpload) return i.promptSprite = new y.sP(g.Z.disableMessage, "OH FINE"), e = i.promptSprite.window, i._window.parent.addChild(e), void e.center();
-                        if (i.replayDataObject.architecture != g.Z.architecture) return i.promptSprite = new y.sP("You may only vote on replays you can see 100% accurately.", "ok"), e = i.promptSprite.window, i._window.parent.addChild(e), void e.center();
+                        if (g.Z.disableUpload) return i.promptSprite = new y.sP(g.Z.disableMessage, "OH FINE"), e = i.promptSprite.window, i._window.addChild(e), void e.center();
+                        if (i.replayDataObject.architecture != g.Z.architecture) return i.promptSprite = new y.sP("You may only vote on replays you can see 100% accurately.", "ok"), e = i.promptSprite.window, i._window.addChild(e), void e.center();
                         i.statusSprite = new y.dU("casting your vote...");
                         var t = i.statusSprite.window;
-                        i._window.parent.addChild(t), t.center();
+                        i._window.addChild(t), t.center();
                         var s = new c.RW(window.HW_SETTINGS.corsProxy + encodeURIComponent("https://totaljerkface.com/replay.hw"));
                         s.method = c.H9.POST;
                         var r = new c.JH;
@@ -17451,7 +17451,7 @@ n(this, function () {
                         var s = String(t.data), r = s.substr(0, 8), o = s.split(":");
                         r.indexOf("<html>") > -1 ? i.promptSprite = new y.sP("There was an unexpected system Error", "oh") : "failure" == o[0] ? "invalid_action" == o[1] ? i.promptSprite = new y.sP("An invalid action was passed (you really shouldn't ever be seeing this).", "ok") : "duplicate_rating" == o[1] ? i.promptSprite = new y.sP("You've already voted on this level.", "ok") : "illegal_argument" == o[1] ? i.promptSprite = new y.sP("Rating must be between 0 and 5.", "ok") : "bad_param" == o[1] ? i.promptSprite = new y.sP("A bad parameter was passed (you really shouldn't ever be seeing this).", "ok") : "app_error" == o[1] ? i.promptSprite = new y.sP("Sorry, there was an application error. It was most likely database related. Please try again in a moment.", "ok") : "not_logged_in" == o[1] ? i.promptSprite = new y.sP("You are not currently logged in.", "alright") : i.promptSprite = new y.sP("An unknown Error has occurred.", "oh") : "success" == o[0] ? ($.f.trackEvent($.f.REPLAY, $.f.VOTE, "rating_" + i.votingStars.rating), i.promptSprite = new y.sP("You voted! Good job.", "thanks")) : i.promptSprite = new y.sP("Error: something dreadful has happened", "ok");
                         var n = i.promptSprite.window;
-                        i._window.parent.addChild(n), n.center();
+                        i._window.addChild(n), n.center();
                     }, i.replayDataObject = t;
                     var r = new c.KG((0, E.qX)("GameUI", "mc_session_replay_menu"));
                     return r.convertChildren(r.pixiSprite), i.addChild(r), i.userText = c.nv.pixiToFlash(r.userText.pixiSprite, r), i.init(), i;
@@ -17806,7 +17806,7 @@ n(this, function () {
                     var t;
                     this.loadContainer.hide(), g.Z.levelIndex = this.levelDataObject.id, g.Z.stageSprite = this.parent.stage;
                     var i = new v.uX;
-                    this.replayDataObject ? (t = window.parent.location.pathname + "?replay_id=" + this.replayDataObject.id, g.Z.currentSession = this.session = new ue(this.replayDataObject.version, this.sessionContentLoader.characterData, this.sessionContentLoader.levelData, this.sessionContentLoader.levelVersion, this.sessionContentLoader.replayData, g.Z.useDebug)) : (t = window.parent.location.pathname + "?level_id=" + this.levelDataObject.id, g.Z.currentSession = this.session = new O.z(g.Z.CURRENT_VERSION, this.sessionContentLoader.characterData, this.sessionContentLoader.levelData, this.sessionContentLoader.levelVersion, g.Z.useDebug)), this.menuButton = new y.Me("menu", 10066329, 50, 16777215), this.parent.addChildAt(this.menuButton, 0), this.menuButton.x = 10, this.menuButton.y = 467, this.menuButton.addEventListener(c.TF.MOUSE_UP, this.menuButtonPressBind), this.menuButton.addEventListener(c.TF.ROLL_OVER, this.menuButtonRollBind), g.Z.hideHUD && (this.menuButton.visible = false), this.session._pixiSprite.name = "session", this.parent.addChildAt(this.session, 0), this.session.create(), this.parent.stage.focus = this.parent.stage, this.sessionContentLoader.removeEventListener(c.ju.COMPLETE, this.beginSessionBind), this.sessionContentLoader.removeEventListener(c.XD.IO_ERROR, this.IOErrorHandlerBind), this.sessionContentLoader.removeEventListener(c.k6.ERROR, this.loadErrorHandlerBind), this.sessionContentLoader = null, this.session.addEventListener(P.Px.COMPLETED, this.sessionCompleteHandlerBind), this.parent.stage.addEventListener(c._d.KEY_DOWN, this.keyDownHandlerBind), window.parent.history.replaceState({}, document.title, t), this.lastSessionStartTime = i.stop();
+                    this.replayDataObject ? (t = window.location.pathname + "?replay_id=" + this.replayDataObject.id, g.Z.currentSession = this.session = new ue(this.replayDataObject.version, this.sessionContentLoader.characterData, this.sessionContentLoader.levelData, this.sessionContentLoader.levelVersion, this.sessionContentLoader.replayData, g.Z.useDebug)) : (t = window.location.pathname + "?level_id=" + this.levelDataObject.id, g.Z.currentSession = this.session = new O.z(g.Z.CURRENT_VERSION, this.sessionContentLoader.characterData, this.sessionContentLoader.levelData, this.sessionContentLoader.levelVersion, g.Z.useDebug)), this.menuButton = new y.Me("menu", 10066329, 50, 16777215), this.parent.addChildAt(this.menuButton, 0), this.menuButton.x = 10, this.menuButton.y = 467, this.menuButton.addEventListener(c.TF.MOUSE_UP, this.menuButtonPressBind), this.menuButton.addEventListener(c.TF.ROLL_OVER, this.menuButtonRollBind), g.Z.hideHUD && (this.menuButton.visible = false), this.session._pixiSprite.name = "session", this.parent.addChildAt(this.session, 0), this.session.create(), this.parent.stage.focus = this.parent.stage, this.sessionContentLoader.removeEventListener(c.ju.COMPLETE, this.beginSessionBind), this.sessionContentLoader.removeEventListener(c.XD.IO_ERROR, this.IOErrorHandlerBind), this.sessionContentLoader.removeEventListener(c.k6.ERROR, this.loadErrorHandlerBind), this.sessionContentLoader = null, this.session.addEventListener(P.Px.COMPLETED, this.sessionCompleteHandlerBind), this.parent.stage.addEventListener(c._d.KEY_DOWN, this.keyDownHandlerBind), window.history.replaceState({}, document.title, t), this.lastSessionStartTime = i.stop();
                 }, n.loadErrorHandler = function (e) {
                     this.loadContainer.hide(), this.sessionContentLoader.removeEventListener(c.ju.COMPLETE, this.beginSessionBind), this.sessionContentLoader.removeEventListener(c.XD.IO_ERROR, this.IOErrorHandlerBind), this.sessionContentLoader.removeEventListener(c.k6.ERROR, this.loadErrorHandlerBind);
                     var t, i = this.sessionContentLoader.errorString;

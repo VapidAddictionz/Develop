@@ -87,5 +87,24 @@ document.addEventListener('keydown', function(e) {
   }
 });
 </script>
+ <script>
+        // Prevent mouse wheel scroll
+        window.addEventListener('wheel', function(e) {
+            e.preventDefault(); // Block wheel scroll
+        }, { passive: false });
+
+        // Prevent touch move on mobile
+        window.addEventListener('touchmove', function(e) {
+            e.preventDefault(); // Block touch scroll
+        }, { passive: false });
+
+        // Prevent key press scroll (Arrow keys, Space, etc.)
+        window.addEventListener('keydown', function(e) {
+            const scrollKeys = ['ArrowUp', 'ArrowDown', 'Space', 'PageUp', 'PageDown', 'Home', 'End'];
+            if (scrollKeys.includes(e.key)) {
+                e.preventDefault(); // Block scroll keys
+            }
+        });
+    </script>
 </body>
 </html>  

@@ -17,36 +17,38 @@
             <div id="phaser-canvas"></div>
         </div>        
     <style id="injectStyles">html, body{ background: none !important; }</style>
-    <script>
+<script>
 (() => {
-  const mapKeys = new Set(['w', 'a', 's', 'd', ' ']);
-  let isClicking = false;
+  const keys = new Set(['w','a','s','d',' ']);
+  const down = new Set();
+  let clicking = false;
 
-  function simulateClick(type) {
-    const event = new MouseEvent(type, {
+  const mouse = t =>
+    document.dispatchEvent(new MouseEvent(t, {
       bubbles: true,
       cancelable: true,
-      button: 0,  // Left mouse button
-      buttons: 1  // Left mouse button down
-    });
-    document.dispatchEvent(event);
-  }
+      button: 0,
+      buttons: t === 'mousedown'
+    }));
+
+  const update = () => {
+    if (down.size && !clicking) mouse('mousedown'), clicking = true;
+    if (!down.size && clicking) mouse('mouseup'), clicking = false;
+  };
 
   document.addEventListener('keydown', e => {
-    if (mapKeys.has(e.key.toLowerCase()) && !isClicking) {
-      isClicking = true;
-      simulateClick('mousedown');  // Trigger mouse down
-      e.preventDefault();
-    }
+    const k = e.key.toLowerCase();
+    if (!keys.has(k) || e.repeat) return;
+    down.add(k); update(); e.preventDefault();
   });
 
   document.addEventListener('keyup', e => {
-    if (mapKeys.has(e.key.toLowerCase()) && isClicking) {
-      isClicking = false;
-      simulateClick('mouseup');  // Trigger mouse up
-      e.preventDefault();
-    }
+    const k = e.key.toLowerCase();
+    if (!keys.has(k)) return;
+    down.delete(k); update(); e.preventDefault();
   });
+
+  window.addEventListener('blur', () => down.clear(), update());
 })();
 </script>
     	<script>
